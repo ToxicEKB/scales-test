@@ -1,0 +1,150 @@
+@suitcase-color: #ee7600;
+@dropzone-padding: 0;
+@transition-rule: all 1s ease-out 0.5s;
+
+.scales-wrapper
+{
+	position: relative;
+	display: flex;
+	width: 690px;
+	height: 300px;
+	max-height: 300px;
+	background: url(img/vesi.png);
+	-webkit-background-size: contain;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.pan-wrapper
+{
+	padding-top: 2em;
+	padding-bottom: 2em;
+
+	@swtr : @transition-rule;
+
+	-webkit-transition: @swtr;
+	-moz-transition:    @swtr;
+	-o-transition:      @swtr;
+	transition:         @swtr;
+
+	&.less>.scalepan
+	{	
+		bottom: 100px;
+	}
+
+	&.more>.scalepan
+	{
+		bottom: 50px;
+	}
+}
+
+.indicator
+{
+	@indtr : @transition-rule;
+	width: 3em;
+	position: absolute;
+	top: 95px;
+	left: 315px;
+
+	&:before
+	{
+		position: absolute;;
+		content: ' ';
+		left: 50%;
+		bottom: 0;
+		width: 3px;
+		height: 50px;
+		background-color: black;
+		transform-origin: bottom center;
+
+		-webkit-transition: @indtr;
+		-moz-transition:    @indtr;
+		-o-transition:      @indtr;
+		transition:         @indtr;
+
+		transform: rotate(0);
+	}
+
+	&.left:before
+	{
+		transform: rotate(-30deg);
+	}
+
+	&.right:before
+	{
+		transform: rotate(30deg);
+	}
+}
+
+.scalepan
+{
+	position: absolute;
+	bottom: 70px;
+	width: 300px;
+	min-height: 80px;
+	padding: @dropzone-padding;
+	border-radius: 1em;
+	border-bottom-style: solid;
+	border-bottom-width: 8px;
+	-webkit-transition: @transition-rule;
+	-moz-transition:    @transition-rule;
+	-o-transition:      @transition-rule;
+	transition:         @transition-rule;
+
+	&.left
+	{
+		border-color: red;
+		left: 0;
+	}
+
+	&.right
+	{
+		border-color: green;
+		right: 0;
+	}
+}
+
+.luggage
+{
+	widht: 300px;
+	height: 200px;
+	padding: @dropzone-padding;
+	border: 1px solid black;
+}
+
+.suitcase
+{
+	cursor:pointer;
+	border-radius: 0.5em;
+	border: 1px solid darken(@suitcase-color, 0.5);
+	padding: 0.4em;
+	margin: 0.4em;
+	height: 80px;
+	width: 40px;
+	background-color: @suitcase-color;
+	display: inline-block;
+	background-image: url(img/172454.svg);
+	-webkit-background-size: contain;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center center;
+
+	// цвета для чемоданов (можно изменить любое свойство)
+	&.s0  { background-color: #ed003b; }	// ~Розовый
+	&.s1  { background-color: #ed3b00; }	// ~Алый
+	&.s2  { background-color: #ed7700; }	// ~Апельсиновый
+	&.s3  { background-color: #eded00; }	// ~Золотой
+	&.s4  { background-color: #3bed00; }	// ~Ярко
+	&.s5  { background-color: #00edb2; }	// ~Голубовато
+	&.s6  { background-color: #00eded; }	// ~Циановый
+	&.s7  { background-color: #00b2ed; }	// ~Лазурный
+	&.s8  { background-color: #0077ed; }	// ~Лазурный
+	&.s9  { background-color: #003bed; color: lightgray; }	// ~Голубой
+	&.s10 { background-color: #0000ed; color: lightgray; }	// ~Синий
+	&.s11 { background-color: #7700ed; color: lightgray; }	// ~Фиолетово
+	&.s12 { background-color: #b200ed; }	// ~Фиолетовый
+	&.s13 { background-color: #ed00ed; }	// ~Сиреневый
+	&.s14 { background-color: #ed0077; }	// ~Сиренево
+
+}
